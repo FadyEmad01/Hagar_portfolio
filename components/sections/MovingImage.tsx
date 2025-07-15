@@ -14,7 +14,7 @@ export default function MovingImage() {
   const x = useTransform(scrollYProgress, [0, 1], ["100vw", "0vw"]) // right to left
 
   return (
-    <div ref={containerRef} className="bg-gray-100 relative">
+    <div ref={containerRef} className="bg-gray-100 overflow-x-hidden relative">
       <motion.img
         src="/images/hagar.png"
         alt="Moving image"

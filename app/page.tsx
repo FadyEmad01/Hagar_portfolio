@@ -17,13 +17,14 @@ export default function LandingPage() {
 
       <MovingImage />
 
+
       <ScrollVelocity
         texts={['Be ✦ Creative ✦ With ✦ Hagar ✦ Elshafy ✦']}
         velocity={200}
         className="bg-black text-white border-y-4 font-syne"
         direction={-1}
       />
-      
+
       <MyWork />
 
 
