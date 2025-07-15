@@ -209,7 +209,7 @@ export default function Card({ post, onClick, isRelated = false }: CardProps) {
   if (isRelated) {
     return (
       <div
-        className={`mp-card relative cursor-pointer rounded-2xl flex-shrink-0 sm:w-[325px] w-[300px] h-[475px] text-black bg-transparent border border-black cursor-pointer`}
+        className={`mp-card relative cursor-pointer rounded-2xl flex-shrink-0 sm:w-[325px] w-[300px] h-[475px] text-black bg-transparent border border-black`}
         onClick={onClick}
       >
         <div className="flex h-full p-3.5 flex-col-reverse gap-y-3.5">

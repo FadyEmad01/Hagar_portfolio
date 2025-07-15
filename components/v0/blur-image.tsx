@@ -61,8 +61,8 @@ export default function BlurImage({
   }
 
   if (fill) {
-    return <Image {...imageProps} fill />
+    return <Image {...imageProps} fill alt="Description of the image" />
   }
 
-  return <Image {...imageProps} width={width} height={height} />
+  return <Image {...imageProps} width={width} height={height} alt="Description of the image" />
 }
