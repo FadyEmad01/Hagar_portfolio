@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { posts } from '@/constants/posts'
 import CardGrid, { CardGridWrap } from '../v0/card-grid'
