@@ -1,6 +1,6 @@
 import React from 'react'
 import { posts } from '@/constants/posts'
-import CardGrid from '../v0/card-grid'
+import CardGrid, { CardGridWrap } from '../v0/card-grid'
 
 export default function MyWork() {
     return (
@@ -8,7 +8,7 @@ export default function MyWork() {
             <div className="max-w-[1360px] w-full flex flex-col items-center overflow-hidden">
                 <div id="ar-homepage-posts">
                     <div className="infinite-scroll-component__outerdiv">
-                        <CardGrid posts={posts} />
+                        <CardGridWrap posts={posts} />
                     </div>
                 </div>
             </div>
