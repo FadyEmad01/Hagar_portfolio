@@ -6,6 +6,7 @@ import Card from "./card"
 import PostModal from "./post-modal"
 import { useRouter, useSearchParams } from "next/navigation"
 import React from "react"
+import { Suspense } from "react";
 
 interface CardGridProps {
   posts: Post[]
@@ -123,4 +124,12 @@ export default function CardGrid({ posts }: CardGridProps) {
       <PostModal post={selectedPost} isOpen={isModalOpen} onClose={handleCloseModal} onPostClick={handleCardClick} />
     </>
   )
+}
+
+export function CardGridWrap(props: CardGridProps) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <CardGrid {...props} />
+    </Suspense>
+  );
 }
