@@ -1,26 +1,604 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --bright-pink: #D23270;
+  --dark-ex-black: #171717;
+  --cramee: #E1CDB2;
+  --orange: #E3A018;
+  /* --orange: #F8E108; */
+  --off-white: #F2F2F2;
+  /* /////////////// */
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+  --primary: oklch(0.21 0.006 285.885);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.705 0.015 286.067);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.141 0.005 285.823);
+  --sidebar-primary: oklch(0.21 0.006 285.885);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.967 0.001 286.375);
+  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
+  --sidebar-border: oklch(0.92 0.004 286.32);
+  --sidebar-ring: oklch(0.705 0.015 286.067);
+}
+
+.dark {
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.92 0.004 286.32);
+  --primary-foreground: oklch(0.21 0.006 285.885);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.552 0.016 285.938);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.274 0.006 286.033);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.552 0.016 285.938);
+}
+
+@font-face {
+  font-family: 'Phonk';
+  src: url('/fonts/PhonkRegularDEMO.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Phonk';
+  src: url('/fonts/PhonkContrastDEMO.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Define a class for it */
+.font-phonk {
+  font-family: 'Phonk', sans-serif;
+}
+
+.font-syne {
+  font-family: var(--font-syne), sans-serif;
+}
+
+.font-leagueGothic {
+  font-family: var(--font-leagueGothic), sans-serif;
+}
+
+.font-crimsonPro {
+  font-family: var(--font-crimsonPro), sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* height: 2000vh; */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+} */
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* bg-colors */
+
+.bg-bright-pink {
+  background-color: var(--bright-pink);
+}
+
+.bg-dark {
+  background-color: var(--dark-ex-black);
+}
+
+.bg-cramee {
+  background-color: var(--cramee);
+}
+
+.bg-orange {
+  background-color: var(--orange);
+}
+
+.bg-off-white {
+  background-color: var(--off-white);
+}
+
+/* text-colors */
+
+.text-bright-pink {
+  color: var(--bright-pink);
+}
+
+.text-dark {
+  color: var(--dark-ex-black);
+}
+
+.text-cramee {
+  color: var(--cramee);
+}
+
+.text-orange {
+  color: var(--orange);
+}
+
+.text-off-white {
+  color: var(--off-white);
+}
+
+/* fill color */
+
+.fill-bright-pink {
+  fill: var(--bright-pink);
+}
+
+.fill-dark {
+  fill: var(--dark-ex-black);
+}
+
+.fill-cramee {
+  fill: var(--cramee);
+}
+
+.fill-orange {
+  fill: var(--orange);
+}
+
+.fill-off-white {
+  fill: var(--off-white);
+}
+
+/* style */
+
+/* .hero-bold-title {
+  font-size: min(19vw, 1000rem);
+  line-height: 0.8;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1440px) {
+  .hero-bold-title {
+    font-size: 19vw;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-bold-title {
+    font-size: calc(31vw - 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-bold-title {
+    font-size: calc(31vw - 0.75rem);
+  }
+} */
+
+.hero-bold-title {
+  font-size: min(19vw, 1000rem);
+  line-height: 0.8;
+  /* text-transform: uppercase; */
+}
+
+@media (max-width: 1440px) {
+  .hero-bold-title {
+    font-size: 15vw;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-bold-title {
+    font-size: calc(31vw - 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-bold-title {
+    font-size: calc(31vw - 0.75rem);
+  }
+}
+
+.custom-scroll-container {
+  height: 300vh;
+  position: relative;
+}
+
+.custom-sticky-section {
+  position: sticky;
+  overflow: hidden;
+  top: 0;
+  height: 100vh;
+}
+
+.scroll-element {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-image-wrapper {
+  position: relative;
+  width: 25vw;
+  height: 25vh;
+}
+
+.scroll-image-wrapper img {
+  object-fit: cover;
+}
+
+.scroll-element:nth-of-type(2) .scroll-image-wrapper {
+  top: -30vh;
+  left: 5vw;
+  width: 35vw;
+  height: 30vh;
+}
+
+.scroll-element:nth-of-type(3) .scroll-image-wrapper {
+  top: -10vh;
+  left: -25vw;
+  width: 20vw;
+  height: 45vh;
+}
+
+.scroll-element:nth-of-type(4) .scroll-image-wrapper {
+  left: 27.5vw;
+  width: 25vw;
+  height: 25vh;
+}
+
+.scroll-element:nth-of-type(5) .scroll-image-wrapper {
+  top: 27.5vh;
+  left: 5vw;
+  width: 20vw;
+  height: 25vh;
+}
+
+.scroll-element:nth-of-type(6) .scroll-image-wrapper {
+  top: 27.5vh;
+  left: -22.5vw;
+  width: 30vw;
+  height: 25vh;
+}
+
+.scroll-element:nth-of-type(7) .scroll-image-wrapper {
+  top: 22.5vh;
+  left: 25vw;
+  width: 15vw;
+  height: 15vh;
+}
+
+/* Container for the entire scroll experience */
+.customScrollContainer {
+  height: 300vh;
+  /* This determines how long the scroll section is */
+  position: relative;
+  background-color: #1a1a1a;
+  /* Dark background for better contrast */
+  color: #f0f0f0;
+  /* Default text color */
+  font-family: 'Arial', sans-serif;
+}
+
+/* The sticky section where animations happen */
+.customStickySection {
+  position: sticky;
+  overflow: hidden;
+  /* Crucial to clip content that moves out of view */
+  top: 0;
+  height: 100vh;
+  /* The height of the viewport where elements are visible */
+  display: flex;
+  /* Helps in positioning child elements */
+  align-items: center;
+  /* Vertically center children by default */
+  justify-content: center;
+  /* Horizontally center children by default */
+}
+
+/* Individual elements that will be animated */
+.scrollElement {
+  width: 100%;
+  /* Take full width of the sticky section */
+  height: 100%;
+  /* Take full height of the sticky section */
+  top: 0;
+  left: 0;
+  position: absolute;
+  /* Allows precise positioning relative to customStickySection */
+  display: flex;
+  align-items: center;
+  /* Centers content within each element */
+  justify-content: center;
+  /* Centers content within each element */
+  pointer-events: none;
+  /* Prevents elements from blocking mouse events on underlying content */
+}
+
+/* Wrapper for images, text, or custom divs */
+.scrollContentWrapper {
+  position: relative;
+  width: 25vw;
+  /* Base width for content, adjust per element */
+  height: 25vh;
+  /* Base height for content, adjust per element */
+  display: flex;
+  /* Use flex for internal content centering */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* Good for text */
+  /* Add a border or background for debugging positioning: */
+  /* border: 1px dashed rgba(255, 255, 255, 0.3); */
+}
+
+/* Styles for Image component inside wrapper */
+.scrollContentWrapper img {
+  object-fit: cover;
+  border-radius: 10px;
+  /* Example style for images */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Specific styles for text content within the wrapper */
+.scrollTextContent {
+  color: #fff;
+  font-size: clamp(1.5vw, 2.5vw, 40px);
+  /* Responsive font size */
+  padding: 1rem;
+  max-width: 70vw;
+  /* Constrain text width */
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.scrollTextContent h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  color: #ffcc00;
+  /* Highlight color */
+}
+
+.scrollTextContent p {
+  font-size: 0.8em;
+  line-height: 1.4;
+  color: #e0e0e0;
+}
+
+/* Specific styles for custom div content within the wrapper */
+.scrollDivContent {
+  background: linear-gradient(45deg, #4a00e0, #8e2de2);
+  /* Gradient background */
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  max-width: 60vw;
+  color: #fff;
+  font-size: clamp(1.2vw, 2vw, 30px);
+}
+
+.scrollDivContent h3 {
+  font-size: 1.6em;
+  margin-bottom: 0.8em;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.scrollDivContent p {
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+/* --- Specific Element Styling (Overriding default .scrollContentWrapper) --- */
+/* These styles will position and size each element's content wrapper */
+
+/* Element 1 (hagar.png) */
+/* This element's positioning is implicitly centered by .scrollElement and .scrollContentWrapper defaults */
+.scrollElement:nth-of-type(1) .scrollContentWrapper {
+  width: 25vw;
+  height: 25vh;
+}
+
+/* Element 2 (text: Discover the Unseen) */
+.scrollElement:nth-of-type(2) .scrollContentWrapper {
+  top: -20vh;
+  /* Move it up */
+  left: 10vw;
+  /* Move it to the right */
+  width: 45vw;
+  /* Adjust width for text readability */
+  height: auto;
+  /* Allow height to adjust */
+}
+
+/* Element 3 (fine-arts.jpg) */
+.scrollElement:nth-of-type(3) .scrollContentWrapper {
+  top: 15vh;
+  /* Move it down */
+  left: -20vw;
+  /* Move it to the left */
+  width: 30vw;
+  height: 40vh;
+}
+
+/* Element 4 (custom-info-card div) */
+.scrollElement:nth-of-type(4) .scrollContentWrapper {
+  top: -10vh;
+  /* Move it up */
+  left: 20vw;
+  /* Move it to the right */
+  width: 50vw;
+  height: auto;
+  /* Allow height to adjust */
+}
+
+/* Element 5 (text: Beyond the Horizon) */
+.scrollElement:nth-of-type(5) .scrollContentWrapper {
+  top: 5vh;
+  /* Move it slightly down */
+  left: -15vw;
+  /* Move it to the left */
+  width: 40vw;
+  height: auto;
+}
+
+/* Element 6 (expressions.jpg) */
+.scrollElement:nth-of-type(6) .scrollContentWrapper {
+  top: 25vh;
+  /* Move it further down */
+  left: 5vw;
+  /* Move it slightly right */
+  width: 20vw;
+  height: 20vh;
+}
+
+/* Add more element-specific positioning/sizing as needed */
+
+/* Basic responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .customScrollContainer {
+    height: 400vh;
+    /* Increase scroll length for more content on smaller screens */
+  }
+
+  .scrollContentWrapper {
+    width: 80vw;
+    height: auto;
+  }
+
+  .scrollTextContent,
+  .scrollDivContent {
+    font-size: clamp(3vw, 4vw, 24px);
+    /* Adjust font sizes */
+    padding: 1rem;
+    max-width: 90vw;
+  }
+
+  /* Adjust positions for mobile if necessary */
+  .scrollElement:nth-of-type(2) .scrollContentWrapper {
+    top: -15vh;
+    left: 0;
+    /* Center horizontally */
+  }
+
+  .scrollElement:nth-of-type(3) .scrollContentWrapper {
+    top: 20vh;
+    left: 0;
+  }
+
+  .scrollElement:nth-of-type(4) .scrollContentWrapper {
+    top: -5vh;
+    left: 0;
+  }
+
+  .scrollElement:nth-of-type(5) .scrollContentWrapper {
+    top: 10vh;
+    left: 0;
+  }
+
+  .scrollElement:nth-of-type(6) .scrollContentWrapper {
+    top: 30vh;
+    left: 0;
+  }
 }
