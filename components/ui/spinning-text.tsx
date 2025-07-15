@@ -71,7 +71,7 @@ export function SpinningText({
       initial='hidden'
       animate='visible'
       variants={containerVariants}
-      transition={finalTransition}
+      // transition={finalTransition}
     >
       {letters.map((letter, index) => (
         <motion.span
