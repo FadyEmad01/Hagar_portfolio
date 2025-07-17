@@ -65,7 +65,12 @@ export function useLenis() {
   return useContext(LenisContext)
 }
 
-export default function LenisWrapper({ children }: { children: React.ReactNode }) {
+interface LenisWrapperProps {
+  children: React.ReactNode
+  className?: string
+}
+
+export default function LenisWrapper({ children, className }: LenisWrapperProps) {
   const lenisRef = useRef<Lenis | null>(null)
   const [lenisInstance, setLenisInstance] = useState<Lenis | null>(null)
 
@@ -88,8 +93,11 @@ export default function LenisWrapper({ children }: { children: React.ReactNode }
 
   return (
     <LenisContext.Provider value={{ lenis: lenisInstance }}>
-      {children}
+      <div className={className} data-lenis-root>
+        {children}
+      </div>
     </LenisContext.Provider>
   )
 }
+
 

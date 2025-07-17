@@ -163,6 +163,13 @@
   }
 }
 
+
+/* html,
+body,
+[data-lenis-root] {
+  overflow-x: hidden;
+} */
+
 /* {
   scrollbar-width: none;
   -ms-overflow-style: none;

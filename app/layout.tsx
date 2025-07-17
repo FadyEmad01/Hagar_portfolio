@@ -42,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} ${leagueGothic.variable} ${crimsonPro.variable} antialiased overflow-x-hidden`}
+        className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} ${leagueGothic.variable} ${crimsonPro.variable} overflow-x-hidden antialiased`}
       >
 
         <LenisWrapper>

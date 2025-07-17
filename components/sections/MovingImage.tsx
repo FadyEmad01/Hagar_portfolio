@@ -1,27 +1,35 @@
 "use client"
-
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion, useScroll, useTransform } from "motion/react"
 import { useRef } from "react"
 
+// SOLUTION 1: Wrapper approach - Most recommended
 export default function MovingImage() {
   const containerRef = useRef(null)
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"], // triggers between scroll range
+    offset: ["start end", "end start"],
   })
 
-  const x = useTransform(scrollYProgress, [0, 1], ["100vw", "0vw"]) // right to left
+  const x = useTransform(scrollYProgress, [0, 1], ["100vw", "-50vw"])
 
   return (
-    <div ref={containerRef} className="bg-gray-100 overflow-x-hidden relative">
-      <motion.img
-        src="/images/hagar.png"
-        alt="Moving image"
-        style={{ x }}
-        transition={{ ease: "easeOut" }}
-        className=" w-50 h-auto object-cover rounded-xl shadow-lg absolute bottom-0"
-      />
+    <div className="relative">
+      <div className="w-full overflow-x-hidden absolute -bottom-1">
+        <section
+          ref={containerRef}
+          className="w-full h-auto bg-black"
+        >
+          <motion.img
+            src="/images/moving.png"
+            alt="Moving image"
+            style={{ x }}
+            transition={{ ease: "easeOut" }}
+            className="md:w-100 w-50 h-auto object-cover pointer-events-none overflow-visible"
+          />
+        </section>
+      </div>
     </div>
+
   )
 }
